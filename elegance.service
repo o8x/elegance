@@ -1,0 +1,19 @@
+[Unit]
+Description=Elegance - Name From Poetries
+Documentation=https://elegance.stdout.com.cn
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/sbin/elegance
+ExecStop=/bin/kill -9 $MAINPID
+Restart=on-failure
+KillMode=process
+TimeoutStopSec=5s
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
